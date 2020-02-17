@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ContactCenter.Models.Orders>
+
+@{
+    ViewData["Title"] = "Registro de Pedidos";
+}
+
+<h1>Listado de Pedidos Pendientes de Confirmacion</h1>
+<br />
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nro. orden
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Nombre/Razon Social
+            </th>
+            <th>
+                Telefono
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Phone)
+                </td>
+                <td>
+                    | <a asp-action="Edit" asp-route-id="@item.OrderId">Ver</a> |
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@*@foreach (var category in Model)
+{
+    <h3><b>@category.OrderId</b></h3>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        cod
+                    </th>
+                    <th>
+                        descripcion
+                    </th>
+                    <th>
+                        cant
+                    </th>
+                    <th>
+                        precio
+                    </th>
+
+                    <th>
+                        total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in category.OrderDetails)
+                {
+                    <tr>
+                        <td>
+                            @product.ProductId
+                        </td>
+                        <td>
+                            @product.Product.ProductName
+                        </td>
+                        <td>
+                            @product.Quantity
+                        </td>
+                        <td>
+                            @product.UnitPrice
+                        </td>
+                        <td>
+                            @product.Total
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+}*@
